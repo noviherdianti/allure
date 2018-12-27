@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: io.qameta.allure:allure-testng:2.7.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.qameta.allure/allure-testng/2.7.0/5eda3a0c0f1047c8d307e6dd46a57d0785ccffb7/allure-testng-2.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.qameta.allure/allure-testng/2.7.0/c30e85ef6b0b8f708db4fef2593ca4ba87c4223a/allure-testng-2.7.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.qameta.allure/allure-testng/2.7.0/cf18b62e9f6e88ebea02bb4e3cc6c0781532bff3/allure-testng-2.7.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <script type="text/javascript" src="https://code.highcharts.com/highcharts.js"></script>
+    <script type="text/javascript" src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.js"></script>
+    <script type="text/javascript" src="/javascripts/createChart.js"></script>
+    <style>
+        .table1 {
+          margin-left: 40px;
+            font-family: arial, sans-serif;
+            font-size: 12px;
+            border-collapse: collapse;
+        }
+        .table1 th {
+            border: 1px solid #4d4d4d;
+            text-align: center;
+            padding: 5px 0;
+            vertical-align: middle;
+        }
+        .table-header, .table-header > img{
+            vertical-align: middle;
+            color: white;
+        }
+        .table1 td {
+            border: 1px solid #4d4d4d;
+            padding: 8px;
+            text-align: center;
+        }
+        ul{
+            margin: 0 0 15px 0;
+        }
+    </style>
+    <script type="text/javascript">
+    	window.onload = function() {
+            createChart(<%- JSON.stringify(resultTotal) %>);
+            inputDataTable(<%- JSON.stringify(resultTotal) %>);
+        };
+
+      function inputDataTable(chartData){
+
+        var pass      = chartData.pass;
+        var fail      = chartData.fail;
+        var warning   = chartData.warning;
+        var error     = chartData.error;
+        var passPercentage = pass * 100 / (pass + fail + warning + error);
+
+        document.getElementById("total").innerHTML    = pass + fail + warning + error;
+        document.getElementById("pass").innerHTML   = pass;
+        document.getElementById("pending").innerHTML  = warning;
+        document.getElementById("failed").innerHTML   = fail;
+        document.getElementById("error").innerHTML    = error;
+
+        document.getElementById("pass1").innerHTML   = passPercentage.toFixed(2)+"%";
+        document.getElementById("pending1").innerHTML  = (warning * 100 / (pass + fail + warning + error)).toFixed(2)+"%";
+        document.getElementById("failed1").innerHTML   = (fail * 100 / (pass + fail + warning + error)).toFixed(2)+"%";
+        document.getElementById("error1").innerHTML    = (error * 100 / (pass + fail + warning + error)).toFixed(2)+"%";
+      }
+    </script> 
+  </head>
+  <body>
+    <h2 style="text-align:center; margin-bottom:25px"><%= project %> - Release <%= release %></h2>
+    <div style="margin-left:30%"><ul><li><b style="font-family: Times New Roman; font-size:13px;">Automation Test Graph</b></li></ul></div>
+    <div id="container" style="width: 1330px;height: 310px;display: table;margin: auto;"></div>
+    <div style="margin-left:30%"><ul><li><b style="font-family: Times New Roman; font-size:13px;">Automation Test Coverage</b></li></ul></div>
+    <div style="display: table;margin: auto;">
+        <table class="table1" style="width: 400px;">
+            <tbody>
+                <tr bgcolor="#4d4d4d">
+                    <th colspan="5" class="table-header">
+                        <img src="https://labs.photon.in/automation-report-darden/photon-logo.png" width="30">
+                        <b>
+                            Automation Summary Test
+                        </b>
+                    </th>
+                </tr>
+                <tr>
+                    <td>Total TC</td>
+                    <td bgcolor="#97cc64">Pass</td>
+                    <td bgcolor="#d35ebe">Pending</td>
+                    <td bgcolor="#fd5a3e">Failed</td>
+                    <td bgcolor="#EDD332">Error</td>
+                </tr>
+                <tr>
+                    <td id="total"></td>
+                    <td id="pass"></td>
+                    <td id="pending"></td>
+                    <td id="failed"></td>
+                    <td id="error"></td>
+                </tr>
+                <tr>
+                    <td bgcolor="grey">Percentage</td>
+                    <td id="pass1"></td>
+                    <td id="pending1"></td>
+                    <td id="failed1"></td>
+                    <td id="error1"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </body>
+</html>
